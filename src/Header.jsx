@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useCartStore from './pages/useCartStore';
 
 export default function Header({ searchTerm, setSearchTerm }) {
+  const cartItems = useCartStore((state) => state.cartItems);
+
   return (
     <header className="main-header">
       <div className="header-container container">
@@ -16,6 +19,9 @@ export default function Header({ searchTerm, setSearchTerm }) {
           <Link to="/discounts" className="nav-link">Զեղչեր</Link>
           <Link to="/services" className="nav-link">Ծառայություններ</Link>
           <Link to="/about" className="nav-link">Մեր մասին</Link>
+          <Link to="/zambyux" className="nav-link" style={{ fontWeight: 'bold' }}>
+            🛒 Զամբյուղ ({cartItems.length})
+          </Link>
         </nav>
 
         <div className="search-bar">
